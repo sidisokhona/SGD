@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class DiscType extends Model
 {
     use HasFactory;
+
+    function discs(){
+        return $this->hasMany(Disc::class);
+      }
+      protected $fillable = ['name'];
 }
