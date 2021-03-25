@@ -15,6 +15,7 @@ class CreateRaysTable extends Migration
     {
         Schema::create('rays', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
             $table->timestamps();
         });
     }

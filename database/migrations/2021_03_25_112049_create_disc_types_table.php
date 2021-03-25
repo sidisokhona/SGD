@@ -15,6 +15,7 @@ class CreateDiscTypesTable extends Migration
     {
         Schema::create('disc_types', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
             $table->timestamps();
         });
     }

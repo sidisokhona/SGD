@@ -15,6 +15,13 @@ class CreateDiscsTable extends Migration
     {
         Schema::create('discs', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->integer('price');
+            $table->integer('stockQuantity');
+            $table->integer('rayQuantity');
+            $table->unsignedBigInteger('ray_id')->index();
+            $table->unsignedBigInteger('author_id')->index();
+            $table->unsignedBigInteger('discType_id')->index();
             $table->timestamps();
         });
     }
