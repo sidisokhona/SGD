@@ -19,10 +19,10 @@
                <edit-ray v-bind:rayToEdit="rayToEdit" @ray-updated="refresh"></edit-ray>
           
            </ul>
-           <pagination :data="rays" @pagination-change-page="getResults" class="mt-5"></pagination>
-           <pagination :data="rays" @pagination-change-page="getResults" >
-                <span slot="prev-nav">&lt; Previous</span>
-                <span slot="next-nav">Next &gt;</span>
+
+           <pagination :data="rays" @pagination-change-page="getResults" class="mt-5">
+                <span slot="prev-nav">&lt;</span>
+                <span slot="next-nav">&gt;</span>
             </pagination>
       
     </div>
@@ -39,8 +39,8 @@
         },
         created(){
             axios.get('http://127.0.0.1:8000/rays')
-                 .then(response => this.rays = response.data)
-                //  .then(console.log(response))
+                  .then(response => this.rays = response.data)
+                 //.then(response => console.log(response))
                  .catch(error => console.log(error));
         },
 

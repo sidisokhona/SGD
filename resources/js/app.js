@@ -16,10 +16,13 @@ Vue.component('pagination', require('laravel-vue-pagination'));
  Vue.component('add-ray', require('./components/raysComponent/addRayComponent.vue').default);
  Vue.component('edit-ray', require('./components/raysComponent/editRayComponent.vue').default);
  
-
+ Vue.component('add-author', require('./components/authorsComponent/addAuthorComponent.vue').default);
+ Vue.component('edit-author', require('./components/authorsComponent/editAuthorComponent.vue').default);
+ 
  
 
  import Ray from './components/raysComponent/raysListeComponent.vue';
+ import Author from './components/authorsComponent/authorsListeComponent.vue';
 
  
  
@@ -29,7 +32,12 @@ Vue.component('pagination', require('laravel-vue-pagination'));
          path: '/Rays',
          component:Ray
  
-     }
+     },
+     {
+        path: '/Authors',
+        component:Author
+
+    }
 
  ];
  
