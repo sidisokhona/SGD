@@ -14,7 +14,7 @@ class RayController extends Controller
      */
     public function index()
     {
-       $rays= Ray::orderBy('created_at', 'DESC')->paginate(10);
+       $rays= Ray::orderBy('created_at', 'DESC')->paginate(5);
        return response()->json($rays);
     
     }
@@ -108,7 +108,7 @@ class RayController extends Controller
 
 
     private function refresh(){
-        $rays= Ray::orderBy('created_at', 'DESC')->paginate(3);
+        $rays= Ray::orderBy('created_at', 'DESC')->paginate(5);
         return response()->json($rays);
     }
 }
