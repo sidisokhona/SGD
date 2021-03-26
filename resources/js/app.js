@@ -18,12 +18,18 @@ Vue.component('pagination', require('laravel-vue-pagination'));
  
  Vue.component('add-author', require('./components/authorsComponent/addAuthorComponent.vue').default);
  Vue.component('edit-author', require('./components/authorsComponent/editAuthorComponent.vue').default);
+
+ Vue.component('add-discType', require('./components/discTypesComponent/addDiscTypeComponent.vue').default);
+ Vue.component('edit-discType', require('./components/discTypesComponent/editDiscTypeComponent.vue').default);
+ 
  
  
 
  import Ray from './components/raysComponent/raysListeComponent.vue';
  import Author from './components/authorsComponent/authorsListeComponent.vue';
+ import DiscType from './components/discTypesComponent/discTypesListeComponent.vue';
 
+ 
  
  
  
@@ -37,7 +43,12 @@ Vue.component('pagination', require('laravel-vue-pagination'));
         path: '/Authors',
         component:Author
 
-    }
+    },
+    {
+        path: '/DiscTypes',
+        component:DiscType
+
+    },
 
  ];
  
