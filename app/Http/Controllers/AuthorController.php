@@ -14,7 +14,8 @@ class AuthorController extends Controller
      */
     public function index()
     {
-        //
+        $author= Author::orderBy('created_at', 'DESC')->paginate(5);
+        return response()->json($author);
     }
 
     /**
@@ -35,7 +36,13 @@ class AuthorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $authors = Author::create($request->all());
+    
+        if($authors){
+           
+            return $this->refresh();
+               
+        }
     }
 
     /**
@@ -55,9 +62,11 @@ class AuthorController extends Controller
      * @param  \App\Models\Author  $author
      * @return \Illuminate\Http\Response
      */
-    public function edit(Author $author)
+    public function edit($id)
     {
-        //
+        $author = Author::find($id);
+
+            return response()->json($author);
     }
 
     /**
@@ -67,9 +76,15 @@ class AuthorController extends Controller
      * @param  \App\Models\Author  $author
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Author $author)
+    public function update($id)
     {
-        //
+        $author = Author::find($id);
+        $author->name = request('name');
+        $author->save();
+
+        if($author){
+            return $this->refresh();
+        }
     }
 
     /**
@@ -78,8 +93,19 @@ class AuthorController extends Controller
      * @param  \App\Models\Author  $author
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Author $author)
+    public function destroy($id)
     {
-        //
+        $author = Author::find($id);
+
+        if($author->delete()){
+            return $this->refresh();
+        }else {
+            return response()->json(['error' => 'Destroy method has failed.'],425);
+        }
+    }
+
+    private function refresh(){
+        $authors= Author::orderBy('created_at', 'DESC')->paginate(3);
+        return response()->json($authors);
     }
 }
