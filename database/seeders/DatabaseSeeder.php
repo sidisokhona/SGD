@@ -41,7 +41,7 @@ class DatabaseSeeder extends Seeder
 
         DB::table('rays')->insert(["name"=>"Livre"]);
         DB::table('rays')->insert(["name"=>"Appareil"]);
-        DB::table('rays')->insert(["name"=>"Leguime"]);
+        DB::table('rays')->insert(["name"=>"Legume"]);
         DB::table('rays')->insert(["name"=>"Lait"]);
         DB::table('rays')->insert(["name"=>"Fruit"]);
         DB::table('rays')->insert(["name"=>"Savon"]);

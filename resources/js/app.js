@@ -21,14 +21,18 @@ Vue.component('pagination', require('laravel-vue-pagination'));
 
  Vue.component('add-discType', require('./components/discTypesComponent/addDiscTypeComponent.vue').default);
  Vue.component('edit-discType', require('./components/discTypesComponent/editDiscTypeComponent.vue').default);
- 
- 
+
+ Vue.component('add-disc', require('./components/discsComponent/addDiscComponent.vue').default);
+ Vue.component('command-disc', require('./components/discsComponent/doCommandDiscComponent.vue').default);
+Vue.component('move-disc', require('./components/discsComponent/moveDiscComponent.vue').default);
+
  
 
  import Ray from './components/raysComponent/raysListeComponent.vue';
  import Author from './components/authorsComponent/authorsListeComponent.vue';
  import DiscType from './components/discTypesComponent/discTypesListeComponent.vue';
-
+ import Disc from './components/discsComponent/discsListeComponent.vue';
+ import ShowDisc from './components/discsComponent/showDetailDiscComponent.vue';
  
  
  
@@ -49,6 +53,17 @@ Vue.component('pagination', require('laravel-vue-pagination'));
         component:DiscType
 
     },
+    {
+        path: '/Discs',
+        component:Disc
+
+    },
+    {
+        path: '/ShowDisc/:discId',
+        name:'showDisc',
+        component:ShowDisc
+
+    }
 
  ];
  
