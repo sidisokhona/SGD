@@ -18,6 +18,7 @@ Route::get('/', function () {
 // -------------------------Author Route------------------------------
 
 Route::get('/authors', [AuthorController::class, 'index']);
+Route::get('/authorsSelect', [AuthorController::class, 'selectInputListForAuthors']);
 Route::post('/authors', [AuthorController::class, 'store']);
 Route::get('/authors/{id}', [AuthorController::class, 'edit']);
 Route::patch('/authors/{id}', [AuthorController::class, 'update']);
@@ -30,6 +31,7 @@ Route::delete('/authors/{id}', [AuthorController::class, 'destroy']);
 // --------------------------------------------------------------------
 // -------------------------Ray Route------------------------------
 Route::get('/rays', [RayController::class, 'index']);
+Route::get('/raysSelect', [RayController::class, 'selectInputListForRay']);
 Route::post('/rays', [RayController::class, 'store']);
 Route::get('/rays/edit/{id}', [RayController::class, 'edit']);
 Route::patch('/rays/edit/{id}', [RayController::class,'update']);
@@ -42,6 +44,7 @@ Route::delete('/rays/{id}', [RayController::class,'destroy']);
 // -------------------------DiscType Route------------------------------
 
 Route::get('/discTypes', [DiscTypeController::class, 'index']);
+Route::get('/discTypesSelect', [DiscTypeController::class, 'selectInputListForDiscType']);
 Route::post('/discTypes', [DiscTypeController::class, 'store']);
 Route::get('/discTypes/{id}', [DiscTypeController::class, 'edit']);
 Route::patch('/discTypes/{id}', [DiscTypeController::class, 'update']);

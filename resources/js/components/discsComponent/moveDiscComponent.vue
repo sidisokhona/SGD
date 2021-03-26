@@ -18,8 +18,8 @@
                 <div class="modal-body">
                     <form>
                         <div class="form-group row">
-                             <label for="name"  class="col-form-label col-sm-6">Quantité</label>
-                             <div class="col-sm-6">
+                             <label for="name"  class="col-form-label col-sm-3">Quantité</label>
+                             <div class="col-sm-9">
                              <input type="text" id="name" class="form-control" v-model="quantity">
                              </div>
                         </div>

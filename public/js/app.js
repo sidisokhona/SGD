@@ -2405,18 +2405,18 @@ __webpack_require__.r(__webpack_exports__);
   created: function created() {
     var _this = this;
 
-    axios.get('http://127.0.0.1:8000/authors').then(function (response) {
+    axios.get('http://127.0.0.1:8000/authorsSelect').then(function (response) {
       return _this.authors = response.data;
     }) //  .then(response => console.log(response.data))
     ["catch"](function (error) {
       return console.log(error);
     });
-    axios.get('http://127.0.0.1:8000/rays').then(function (response) {
+    axios.get('http://127.0.0.1:8000/raysSelect').then(function (response) {
       return _this.rays = response.data;
     })["catch"](function (error) {
       return console.log(error);
     });
-    axios.get('http://127.0.0.1:8000/discTypes').then(function (response) {
+    axios.get('http://127.0.0.1:8000/discTypesSelect').then(function (response) {
       return _this.discTypes = response.data;
     })["catch"](function (error) {
       return console.log(error);
@@ -2821,18 +2821,18 @@ __webpack_require__.r(__webpack_exports__);
     ["catch"](function (error) {
       return console.log(error);
     });
-    axios.get('http://127.0.0.1:8000/authors').then(function (response) {
-      return _this.authors = response.data;
+    axios.get('http://127.0.0.1:8000/authorsSelect').then(function (response) {
+      return _this.authors = response;
     })["catch"](function (error) {
       return console.log(error);
     });
-    axios.get('http://127.0.0.1:8000/rays').then(function (response) {
-      return _this.rays = response.data;
+    axios.get('http://127.0.0.1:8000/raysSelect').then(function (response) {
+      return _this.rays = response;
     })["catch"](function (error) {
       return console.log(error);
     });
-    axios.get('http://127.0.0.1:8000/discTypes').then(function (response) {
-      return _this.discTypes = response.data;
+    axios.get('http://127.0.0.1:8000/discTypesSelect').then(function (response) {
+      return _this.discTypes = response;
     })["catch"](function (error) {
       return console.log(error);
     });
@@ -41527,13 +41527,13 @@ var render = function() {
                     _c(
                       "label",
                       {
-                        staticClass: "col-form-label col-sm-6",
+                        staticClass: "col-form-label col-sm-3",
                         attrs: { for: "name" }
                       },
                       [_vm._v("Quantité")]
                     ),
                     _vm._v(" "),
-                    _c("div", { staticClass: "col-sm-6" }, [
+                    _c("div", { staticClass: "col-sm-9" }, [
                       _c("input", {
                         directives: [
                           {
@@ -41676,13 +41676,13 @@ var render = function() {
                     _c(
                       "label",
                       {
-                        staticClass: "col-form-label col-sm-6",
+                        staticClass: "col-form-label col-sm-3",
                         attrs: { for: "name" }
                       },
                       [_vm._v("Quantité")]
                     ),
                     _vm._v(" "),
-                    _c("div", { staticClass: "col-sm-6" }, [
+                    _c("div", { staticClass: "col-sm-9" }, [
                       _c("input", {
                         directives: [
                           {
@@ -41805,7 +41805,7 @@ var render = function() {
             [_vm._v("Nom du disque")]
           ),
           _vm._v(" "),
-          _c("div", { staticClass: "col-sm-3" }, [
+          _c("div", { staticClass: "col-sm-10" }, [
             _c("input", {
               directives: [
                 {
@@ -41840,7 +41840,7 @@ var render = function() {
             [_vm._v("Type de disc")]
           ),
           _vm._v(" "),
-          _c("div", { staticClass: "col-sm-3" }, [
+          _c("div", { staticClass: "col-sm-10" }, [
             _c(
               "select",
               {
@@ -41891,7 +41891,7 @@ var render = function() {
             [_vm._v("Prix unitaire")]
           ),
           _vm._v(" "),
-          _c("div", { staticClass: "col-sm-3" }, [
+          _c("div", { staticClass: "col-sm-10" }, [
             _c("input", {
               directives: [
                 {
@@ -41926,7 +41926,7 @@ var render = function() {
             [_vm._v("Réalisateur")]
           ),
           _vm._v(" "),
-          _c("div", { staticClass: "col-sm-3" }, [
+          _c("div", { staticClass: "col-sm-10" }, [
             _c(
               "select",
               {
@@ -41977,7 +41977,7 @@ var render = function() {
             [_vm._v("Nom du Rayon")]
           ),
           _vm._v(" "),
-          _c("div", { staticClass: "col-sm-3" }, [
+          _c("div", { staticClass: "col-sm-10" }, [
             _c(
               "select",
               {
@@ -42031,7 +42031,7 @@ var render = function() {
             [_vm._v("Quantiter Rayon")]
           ),
           _vm._v(" "),
-          _c("div", { staticClass: "col-sm-3" }, [
+          _c("div", { staticClass: "col-sm-10" }, [
             _c("input", {
               directives: [
                 {
@@ -42066,7 +42066,7 @@ var render = function() {
             [_vm._v("Quantiter en stock")]
           ),
           _vm._v(" "),
-          _c("div", { staticClass: "col-sm-3" }, [
+          _c("div", { staticClass: "col-sm-10" }, [
             _c("input", {
               directives: [
                 {

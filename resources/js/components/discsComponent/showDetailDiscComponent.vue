@@ -5,14 +5,14 @@
     <form class="justify-content-between align-item-center">
         <div class="form-group row">
                 <label for="name" class="col-form-label col-sm-2">Nom du disque</label>
-       <div  class="col-sm-3">
+       <div  class="col-sm-10">
                 <input   type="text" id="name" class="form-control" v-model="discToEdit.name">
             </div>
         </div>
 
         <div class="form-group row">
                 <label for="discType" class="col-form-label col-sm-2">Type de disc</label>
-                <div  class="col-sm-3">
+                <div  class="col-sm-10">
                     <select class="form-control"  id="discType" v-model="discToEdit.discType_id" >
                         <option v-for="discType in discTypes.data" :key="discType.id" :value="discType.id">{{discType.name}}</option>
 
@@ -22,13 +22,13 @@
 
         <div class="form-group row">
                 <label for="price" class="col-form-label col-sm-2">Prix unitaire</label>
-              <div  class="col-sm-3">
+              <div  class="col-sm-10">
             <input   type="text" id="price" class="form-control" v-model="discToEdit.price"> 
             </div>
         </div>
         <div class="form-group row"> 
                 <label for="exampleFormControlSelect1" class="col-form-label col-sm-2">Réalisateur</label>
-                  <div  class="col-sm-3">
+                  <div  class="col-sm-10">
                     <select class="form-control" id="author" v-model="discToEdit.author_id" >
                         <option v-for="author in authors.data" :key="author.id" :value="author.id">{{author.name}}</option>
                     </select>
@@ -37,7 +37,7 @@
 
          <div class="form-group row">
                 <label for="ray" class="col-form-label col-sm-2">Nom du Rayon</label>
-                <div  class="col-sm-3">
+                <div  class="col-sm-10">
                     <select class="form-control" id="ray" v-model="discToEdit.ray_id" >
                         <option v-for="ray in rays.data" :key="ray.id" :value="ray.id">{{ray.name}}</option>
                     </select>
@@ -46,14 +46,14 @@
 
         <div class="form-group row">
                 <label for="rayQuantity" class="col-sm-2 col-form-label">Quantiter Rayon</label>
-                  <div  class="col-sm-3">
+                  <div  class="col-sm-10">
                     <input readonly type="text" id="rayQuantity" class="form-control" v-model="discToEdit.rayQuantity">
                 </div>
         </div> 
        
         <div class="form-group row">
                 <label for="stockQuantity " class="col-form-label col-sm-2">Quantiter en stock</label>
-        <div  class="col-sm-3">
+        <div  class="col-sm-10">
                  <input readonly type="text" id="stockQuantity" class="form-control" v-model="discToEdit.stockQuantity">
                </div>
         </div>
@@ -102,16 +102,16 @@ export default {
                 //  .then(response => console.log(response.data))
                  .catch(error => console.log(error));
 
-        axios.get('http://127.0.0.1:8000/authors')
-                 .then(response => this.authors = response.data)
+        axios.get('http://127.0.0.1:8000/authorsSelect')
+                 .then(response => this.authors = response)
                  .catch(error => console.log(error));
 
-            axios.get('http://127.0.0.1:8000/rays')
-                 .then(response => this.rays = response.data)
+            axios.get('http://127.0.0.1:8000/raysSelect')
+                 .then(response => this.rays = response)
                  .catch(error => console.log(error));
 
-                axios.get('http://127.0.0.1:8000/discTypes')
-                 .then(response => this.discTypes = response.data)
+                axios.get('http://127.0.0.1:8000/discTypesSelect')
+                 .then(response => this.discTypes = response)
                  .catch(error => console.log(error));
         },
 

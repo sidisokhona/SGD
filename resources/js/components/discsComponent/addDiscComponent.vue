@@ -89,16 +89,16 @@
             }    
         },
          created(){
-            axios.get('http://127.0.0.1:8000/authors')
+            axios.get('http://127.0.0.1:8000/authorsSelect')
                  .then(response => this.authors = response.data)
                 //  .then(response => console.log(response.data))
                  .catch(error => console.log(error));
 
-            axios.get('http://127.0.0.1:8000/rays')
+            axios.get('http://127.0.0.1:8000/raysSelect')
                  .then(response => this.rays = response.data)
                  .catch(error => console.log(error));
 
-                axios.get('http://127.0.0.1:8000/discTypes')
+                axios.get('http://127.0.0.1:8000/discTypesSelect')
                  .then(response => this.discTypes = response.data)
                  .catch(error => console.log(error));
         },
