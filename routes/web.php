@@ -2,8 +2,17 @@
 use App\Http\Controllers\RayController;
 use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\DiscTypeController;
+use App\Http\Controllers\DiscController;
 use Illuminate\Support\Facades\Route;
 
+
+// -----------------------------------------------------------------------------
+// --------------------------------Welcome Route----------------------
+Route::get('/', function () {
+    return view('welcome');
+});
+// ----------------------------------------------------------------------------
+// ---------------------------Welcome Route End
 
 // --------------------------------------------------------------------
 // -------------------------Author Route------------------------------
@@ -41,8 +50,18 @@ Route::delete('/discTypes/{id}', [DiscTypeController::class, 'destroy']);
 // --------------------------------------------------------------------
 // -------------------------End DiscType Route------------------------------
 
+// --------------------------------------------------------------------
+// -------------------------Disc Route------------------------------
+
+Route::get('/discs', [DiscController::class, 'index']);
+Route::post('/discs', [DiscController::class, 'store']);
+Route::get('/discs/{id}', [DiscController::class, 'edit']);
+Route::patch('/discs/{id}', [DiscController::class, 'update']);
+Route::delete('/discs/{id}', [DiscController::class, 'destroy']);
+Route::patch('/discs/{id}/rayQuantity', [DiscController::class, 'addRayQuantity']);
+Route::patch('/discs/{id}/stockQuantity', [DiscController::class, 'addStockQuantity']);
 
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// --------------------------------------------------------------------
+// -------------------------End Disc Route------------------------------
+
