@@ -14,7 +14,9 @@ class RayController extends Controller
      */
     public function index()
     {
-        //
+       $rays= Ray::orderBy('created_at', 'DESC')->paginate(10);
+       return response()->json($rays);
+    
     }
 
     /**
@@ -35,7 +37,13 @@ class RayController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $rays = Ray::create($request->all());
+    
+        if($rays){
+           
+         return $this->refresh();
+               
+        }
     }
 
     /**
@@ -57,8 +65,11 @@ class RayController extends Controller
      */
     public function edit(Ray $ray)
     {
-        //
+        $ray = Ray::find($id);
+
+        return response()->json($ray);
     }
+    
 
     /**
      * Update the specified resource in storage.
@@ -67,9 +78,15 @@ class RayController extends Controller
      * @param  \App\Models\Ray  $ray
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Ray $ray)
+    public function update($id)
     {
-        //
+        $ray = Ray::find($id);
+        $ray->name = request('name');
+        $ray->save();
+
+        if($ray){
+            return $this->refresh();
+        }
     }
 
     /**
@@ -78,8 +95,20 @@ class RayController extends Controller
      * @param  \App\Models\Ray  $ray
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Ray $ray)
+    public function destroy($id)
     {
-        //
+        $ray = Ray::find($id);
+
+        if($ray->delete()){
+            return $this->refresh();
+        }else {
+            return response()->json(['error' => 'Destroy method has failed.'],425);
+        }
+    }
+
+
+    private function refresh(){
+        $rays= Ray::orderBy('created_at', 'DESC')->paginate(3);
+        return response()->json($rays);
     }
 }
