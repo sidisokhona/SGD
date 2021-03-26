@@ -109,4 +109,12 @@ class DiscTypeController extends Controller
         $discType= DiscType::orderBy('created_at', 'DESC')->paginate(5);
         return response()->json($discType);
     }
+
+     //La liste sans  pagination pour les modals
+     public function selectInputListForDiscType()
+     {
+        $discTypes= DiscType::all();
+        return response()->json($discTypes);
+     
+     }
 }

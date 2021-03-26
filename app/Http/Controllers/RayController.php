@@ -111,4 +111,12 @@ class RayController extends Controller
         $rays= Ray::orderBy('created_at', 'DESC')->paginate(5);
         return response()->json($rays);
     }
+   
+    //La liste sans  pagination pour les modals
+    public function selectInputListForRay()
+    {
+       $rays= Ray::all();
+       return response()->json($rays);
+    
+    }
 }

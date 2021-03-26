@@ -108,4 +108,12 @@ class AuthorController extends Controller
         $authors= Author::orderBy('created_at', 'DESC')->paginate(3);
         return response()->json($authors);
     }
+
+     //La liste sans  pagination pour les modals
+     public function selectInputListForAuthors()
+     {
+        $authors= Author::all();
+        return response()->json($authors);
+     
+     }
 }
