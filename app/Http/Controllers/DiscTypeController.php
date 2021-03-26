@@ -14,7 +14,8 @@ class DiscTypeController extends Controller
      */
     public function index()
     {
-        //
+        $discTypes= DiscType::orderBy('created_at', 'DESC')->paginate(5);
+        return response()->json($discTypes);
     }
 
     /**
@@ -35,7 +36,13 @@ class DiscTypeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $discTypes = DiscType::create($request->all());
+    
+        if($discTypes){
+           
+         return $this->refresh();
+               
+        }
     }
 
     /**
@@ -55,9 +62,11 @@ class DiscTypeController extends Controller
      * @param  \App\Models\DiscType  $discType
      * @return \Illuminate\Http\Response
      */
-    public function edit(DiscType $discType)
+    public function edit($id)
     {
-        //
+        $discType = DiscType::find($id);
+
+        return response()->json($discType);
     }
 
     /**
@@ -67,9 +76,15 @@ class DiscTypeController extends Controller
      * @param  \App\Models\DiscType  $discType
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, DiscType $discType)
+    public function update($id)
     {
-        //
+        $discType = DiscType::find($id);
+        $discType->name = request('name');
+        $discType->save();
+
+        if($discType){
+            return $this->refresh();
+        }
     }
 
     /**
@@ -78,8 +93,20 @@ class DiscTypeController extends Controller
      * @param  \App\Models\DiscType  $discType
      * @return \Illuminate\Http\Response
      */
-    public function destroy(DiscType $discType)
+    public function destroy($id)
     {
-        //
+        $discType = DiscType::find($id);
+
+        if($discType->delete()){
+            return $this->refresh();
+        }else {
+            return response()->json(['error' => 'Destroy method has failed.'],425);
+        }
+    }
+
+
+    private function refresh(){
+        $discType= DiscType::orderBy('created_at', 'DESC')->paginate(5);
+        return response()->json($discType);
     }
 }

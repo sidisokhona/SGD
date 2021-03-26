@@ -1,6 +1,7 @@
 <?php
 use App\Http\Controllers\RayController;
 use App\Http\Controllers\AuthorController;
+use App\Http\Controllers\DiscTypeController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -12,6 +13,8 @@ Route::post('/authors', [AuthorController::class, 'store']);
 Route::get('/authors/{id}', [AuthorController::class, 'edit']);
 Route::patch('/authors/{id}', [AuthorController::class, 'update']);
 Route::delete('/authors/{id}', [AuthorController::class, 'destroy']);
+// --------------------------------------------------------------------
+// -------------------------End Author Route------------------------------
 
 
 
@@ -24,6 +27,19 @@ Route::patch('/rays/edit/{id}', [RayController::class,'update']);
 Route::delete('/rays/{id}', [RayController::class,'destroy']);
 // --------------------------------------------------------------------
 // -------------------------End Ray Route------------------------------
+
+
+// --------------------------------------------------------------------
+// -------------------------DiscType Route------------------------------
+
+Route::get('/discTypes', [DiscTypeController::class, 'index']);
+Route::post('/discTypes', [DiscTypeController::class, 'store']);
+Route::get('/discTypes/{id}', [DiscTypeController::class, 'edit']);
+Route::patch('/discTypes/{id}', [DiscTypeController::class, 'update']);
+Route::delete('/discTypes/{id}', [DiscTypeController::class, 'destroy']);
+
+// --------------------------------------------------------------------
+// -------------------------End DiscType Route------------------------------
 
 
 
