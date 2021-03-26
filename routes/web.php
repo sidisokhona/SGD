@@ -1,6 +1,17 @@
 <?php
 use App\Http\Controllers\RayController;
+use App\Http\Controllers\AuthorController;
 use Illuminate\Support\Facades\Route;
+
+
+// --------------------------------------------------------------------
+// -------------------------Author Route------------------------------
+
+Route::get('/authors', [AuthorController::class, 'index']);
+Route::post('/authors', [AuthorController::class, 'store']);
+Route::get('/authors/{id}', [AuthorController::class, 'edit']);
+Route::patch('/authors/{id}', [AuthorController::class, 'update']);
+Route::delete('/authors/{id}', [AuthorController::class, 'destroy']);
 
 
 
