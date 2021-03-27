@@ -36,7 +36,4 @@ Est une application de gestion des Disques.
 
 
 
-### Installation du package
-    $ sudo aptitude install php-mongodb #sur debian
-    $ sudo pecl install mongodb #avec pecl
 
