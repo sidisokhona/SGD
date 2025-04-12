@@ -19,16 +19,17 @@ class DiscController extends Controller
     public function index()
     {
         $discs = DB::table('discs')
-        ->leftJoin('authors', 'discs.author_id', '=', 'authors.id')
-        ->leftJoin('disc_Types', 'discs.discType_id', '=', 'disc_Types.id')
-        ->leftJoin('rays', 'discs.ray_id', '=', 'rays.id')
-        ->select('discs.id','discs.name','discs.price','discs.rayQuantity','discs.stockQuantity',DB::raw('authors.name as author_name'),DB::raw('rays.name as ray_name'),DB::raw('disc_Types.name as disc_Type_name'))
-        ->paginate(5);
-        foreach($discs as $disc ){
+            ->leftJoin('authors', 'discs.author_id', '=', 'authors.id')
+            ->leftJoin('disc_Types', 'discs.discType_id', '=', 'disc_Types.id')
+            ->leftJoin('rays', 'discs.ray_id', '=', 'rays.id')
+            ->select('discs.id', 'discs.name', 'discs.price', 'discs.rayQuantity', 'discs.stockQuantity', DB::raw('authors.name as author_name'), DB::raw('rays.name as ray_name'), DB::raw('disc_Types.name as disc_Type_name'))
+            ->paginate(5);
+        foreach ($discs as $disc) {
             $disc->disponible = $disc->stockQuantity + $disc->rayQuantity;
         }
-        
-       return response()->json($discs);
+
+
+        return response()->json($discs);
     }
 
     /**
@@ -50,11 +51,10 @@ class DiscController extends Controller
     public function store(Request $request)
     {
         $discs = Disc::create($request->all());
- 
-        if($discs){
-           
-         return $this->refresh();
-               
+
+        if ($discs) {
+
+            return $this->refresh();
         }
     }
 
@@ -75,7 +75,7 @@ class DiscController extends Controller
      * @param  \App\Models\Disc  $disc
      * @return \Illuminate\Http\Response
      */
-    public function edit( $id)
+    public function edit($id)
     {
         $disc = Disc::find($id);
 
@@ -100,7 +100,7 @@ class DiscController extends Controller
         $disc->stockQuantity = request('stockQuantity');
         $disc->save();
 
-        if($disc){
+        if ($disc) {
             return $this->refresh();
         }
     }
@@ -115,42 +115,45 @@ class DiscController extends Controller
     {
         $disc = Disc::find($id);
 
-        if($disc->delete()){
+        if ($disc->delete()) {
             return $this->refresh();
-        }else {
-            return response()->json(['error' => 'Destroy method has failed.'],425);
+        } else {
+            return response()->json(['error' => 'Destroy method has failed.'], 425);
         }
     }
 
-    public function addRayQuantity($id){
+    public function addRayQuantity($id)
+    {
         $disc = Disc::find($id);
         $quantity = request('quantity');
         if ($disc->stockQuantity < $quantity) {
-            return response()->json(['error' => 'Quantité est supérieur à le stock disponible.'],400);
+            return response()->json(['error' => 'Quantité est supérieur à le stock disponible.'], 400);
         }
         $disc->stockQuantity -= $quantity;
         $disc->rayQuantity += $quantity;
         $disc->save();
 
-        if($disc){
+        if ($disc) {
             return $this->edit($id);
         }
     }
 
-    public function addStockQuantity($id){
+    public function addStockQuantity($id)
+    {
         $disc = Disc::find($id);
         $quantity = request('quantity');
-    
+
         $disc->stockQuantity += $quantity;
-      
+
         $disc->save();
 
-        if($disc){
+        if ($disc) {
             return $this->edit($id);
         }
     }
 
-    private function refresh(){
+    private function refresh()
+    {
         return $this->index();
     }
 }
